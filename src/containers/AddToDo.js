@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { View,Text,TextInput, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
-
+import {addToDoAction} from '../actions/index';
 
 class AddToDo extends React.Component{
     constructor(props){
@@ -12,10 +12,8 @@ class AddToDo extends React.Component{
         }
     }
     addToDo=(textstate)=>{
-        let id=Math.random().toString();
-        this.props.dispatch({type:'ADD_TODO',payload:{id:id,text:textstate,complated:false}});
+        this.props.dispatch(addToDoAction(textstate));
         this.setState({text:''});
-        
     }
     
     render() {
